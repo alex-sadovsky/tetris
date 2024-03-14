@@ -1,0 +1,17 @@
+{
+  "name": "tetris",
+  "version": "1.0.0",
+  "description": "Tetris game in JS",
+  "main": "index.html",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview"
+  },
+  "author": "Aliaksei Sadouski",
+  "license": "ISC",
+  "devDependencies": {
+    "typescript": "^5.4.2",
+    "vite": "^5.1.6"
+  }
+}
