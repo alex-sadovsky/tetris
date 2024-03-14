@@ -1,0 +1,41 @@
+#tetris {
+  display: grid;
+  grid-template-columns: repeat(10, 30px);
+}
+
+.cell {
+  width: 30px;
+  height: 30px;
+  border: 1px solid #ccc;
+  text-align: center;
+  line-height: 30px;
+  cursor: pointer;
+}
+
+.cell-transparent {
+  background-color: transparent;
+}
+
+.cell-cyan {
+  background-color: cyan;
+}
+
+.cell-yellow {
+  background-color: yellow;
+}
+
+.cell-purple {
+  background-color: purple;
+}
+
+.cell-orange {
+  background-color: orange;
+}
+
+.cell-green {
+  background-color: green;
+}
+
+#controls {
+  margin-top: 20px;
+}
