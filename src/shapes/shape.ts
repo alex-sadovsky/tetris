@@ -8,7 +8,26 @@ export abstract class Shape {
     this._setInitialShape();
   }
 
-  public abstract getCalculatedCells(): ShapeCell[];
+  public getCalculatedCells(): ShapeCell[] {
+    const rotateCenter = this._shapeCells[0];
+
+    const calculatedCells = this._shapeCells.map((cell: ShapeCell) => {
+      const resultCell = new ShapeCell();
+
+      if (cell.rotateCenter) {
+        resultCell.x = cell.x;
+        resultCell.y = cell.y;
+      } else {
+        resultCell.x = rotateCenter.x + cell.offsetX;
+        resultCell.y = rotateCenter.y + cell.offsetY;
+      }
+      resultCell.color = cell.color;
+
+      return resultCell;
+    });
+
+    return calculatedCells;
+  }
 
   // public abstract moveLeft(): void;
   // public abstract moveRight(): void;
@@ -16,7 +35,11 @@ export abstract class Shape {
 
   public abstract rotate(angle: number): void;
 
-  protected abstract _setInitialShape(): void;
+  protected _setInitialShape(): void {
+    this._setRotateCenter();
+    this._setOffsets0();
+    this._setShapeColor();
+  }
   protected abstract _setRotateCenter(): void;
   protected abstract _setShapeColor(): void;
 
@@ -25,10 +48,6 @@ export abstract class Shape {
   // protected abstract _setOffsets180(): void;
   // protected abstract _setOffsets270(): void;
 }
-
-// class Square extends Shape {
-
-// }
 
 // class Tshape extends Shape {
 

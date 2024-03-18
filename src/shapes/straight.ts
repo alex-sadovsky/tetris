@@ -8,34 +8,7 @@ export class Straight extends Shape {
   }
 
   public rotate(angle: number): void {
-    angle;
-  }
-
-  public getCalculatedCells(): ShapeCell[] {
-    const rotateCenter = this._shapeCells[0];
-
-    const calculatedCells = this._shapeCells.map((cell: ShapeCell) => {
-      const resultCell = new ShapeCell();
-
-      if (cell.rotateCenter) {
-        resultCell.x = cell.x;
-        resultCell.y = cell.y;
-      } else {
-        resultCell.x = rotateCenter.x + cell.offsetX;
-        resultCell.y = rotateCenter.y + cell.offsetY;
-      }
-      resultCell.color = cell.color;
-
-      return resultCell;
-    });
-
-    return calculatedCells;
-  }
-
-  protected _setInitialShape(): void {
-    this._setRotateCenter();
-    this._setOffsets0();
-    this._setShapeColor();
+    console.log(angle);
   }
 
   protected _setRotateCenter(): void {

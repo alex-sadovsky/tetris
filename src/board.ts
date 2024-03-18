@@ -8,9 +8,7 @@ export class Board {
   private _currentBoard: number[][] = [];
   // #filledCells: number[] = [];
 
-  constructor() {
-    this._makeEmptyBoard();
-  }
+  constructor() { }
 
   get currentBoard(): number[][] {
     return this._currentBoard;
@@ -38,7 +36,7 @@ export class Board {
     });
   }
 
-  private _makeEmptyBoard(): void {
+  public makeEmptyBoard(): void {
     for(let rowNum = 0; rowNum < this._heightRows; rowNum++) {
       this._currentBoard[rowNum] = [];
       for(let colNum = 0; colNum < this._widthCols; colNum++) {
