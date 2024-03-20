@@ -36,6 +36,8 @@ export class HTMLBoardRenderer {
   }
 
   public render(board: Board): void {
+    this._cleanBoard();
+
     for(let rowNum = 0; rowNum < board.rows; rowNum++) {
       for(let colNum = 0; colNum < board.cols; colNum++) {
         const cell = document.createElement('div');
@@ -43,6 +45,10 @@ export class HTMLBoardRenderer {
         this._boardElement.appendChild(cell);
       }
     }
+  }
+
+  private _cleanBoard(): void {
+    this._boardElement.innerHTML = '';
   }
 
   private _resolveCssForCell(cellEl: HTMLElement, colorCode = ShapeColor.Transparent): void {

@@ -6,6 +6,7 @@ export class Rotate extends Control {
   }
 
   public makeAction(): void {
-    this._shape.rotate(90);
+    this._shape.rotate();
+    super.makeAction();
   }
 }

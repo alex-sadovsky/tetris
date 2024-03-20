@@ -33,20 +33,52 @@ export abstract class Shape {
   // public abstract moveRight(): void;
   // public abstract moveDown(): void;
 
-  public abstract rotate(angle: number): void;
+  public rotate(): void {
+    this._setNextRotationAngle();
+    
+    switch(this._currentRotateAngle) {
+      case 0:
+        this._setOffsets0();
+        break;
+      case 90:
+        this._setOffsets90();
+        break;
+      case 180:
+        this._setOffsets180();
+        break;
+      case 270:
+        this._setOffsets270();
+        break;
+    }
+  }
 
   protected _setInitialShape(): void {
-    this._setRotateCenter();
+    this._setRotationCenter();
     this._setOffsets0();
     this._setShapeColor();
   }
-  protected abstract _setRotateCenter(): void;
+
+  protected _createCells(numberOfCells: number): void {
+    for (let cellNumber = 0; cellNumber < numberOfCells; cellNumber++) {
+      this._shapeCells.push(new ShapeCell());
+    }
+  }
+
+  protected abstract _setRotationCenter(): void;
   protected abstract _setShapeColor(): void;
 
   protected abstract _setOffsets0(): void;
-  // protected abstract _setOffsets90(): void;
-  // protected abstract _setOffsets180(): void;
-  // protected abstract _setOffsets270(): void;
+  protected abstract _setOffsets90(): void;
+  protected abstract _setOffsets180(): void;
+  protected abstract _setOffsets270(): void;
+
+  protected _setNextRotationAngle(): void {
+    if (this._currentRotateAngle === 270) {
+      this._currentRotateAngle = 0;
+    } else {
+      this._currentRotateAngle += 90;
+    }
+  }
 }
 
 // class Tshape extends Shape {

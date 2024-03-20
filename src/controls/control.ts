@@ -10,7 +10,9 @@ export abstract class Control {
     this._setupControlElement();
   }
 
-  public abstract makeAction(): void;
+  public makeAction(): void {
+    this._triggerRerenderBoardEvent();
+  }
 
   set shape(shape: Shape) {
     this._shape = shape;
@@ -23,5 +25,10 @@ export abstract class Control {
   protected _setupControlElement(): void {
     this._controlElement = document.getElementById(this._id) as HTMLElement;
     this._controlElement.addEventListener('click', this.makeAction.bind(this));
+  }
+
+  protected _triggerRerenderBoardEvent(): void {
+    const rerenderBoardEvent = new CustomEvent('rerenderBoard');
+    document.dispatchEvent(rerenderBoardEvent);
   }
 }

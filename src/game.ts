@@ -12,6 +12,8 @@ export class Game {
   private _controls = new Controls();
 
   constructor() {
+    this._setupGlobalEvents();
+
     this._board.currentShape = new Straight();
     this._controls.setNewShape(this._board.currentShape);
   }
@@ -24,5 +26,9 @@ export class Game {
 
   public start(): void {
 
+  }
+
+  private _setupGlobalEvents(): void {
+    document.addEventListener('rerenderBoard', this.renderBoard.bind(this));
   }
 }
